@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://teaeb5w5bwc5"
+path="res://.godot/imported/CONTENT ID - intense-trailer-cinematic-142691.mp3-3390065d6ee94f8f8f1fa791230aff9c.mp3str"
+
+[deps]
+
+source_file="res://CONTENT ID - intense-trailer-cinematic-142691.mp3"
+dest_files=["res://.godot/imported/CONTENT ID - intense-trailer-cinematic-142691.mp3-3390065d6ee94f8f8f1fa791230aff9c.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

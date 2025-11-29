@@ -1,0 +1,188 @@
+[gd_scene load_steps=19 format=3 uid="uid://q4fwfaiyq0ly"]
+
+[ext_resource type="Script" uid="uid://iwluqq1nhh1l" path="res://UI/main.gd" id="1_vnck2"]
+[ext_resource type="AudioStream" uid="uid://c57orqxi362na" path="res://drum-trailer-intro-263643.mp3" id="2_a2b50"]
+[ext_resource type="Texture2D" uid="uid://b0lsuq15hg6lf" path="res://RE pic.jpg" id="2_emhnf"]
+[ext_resource type="AudioStream" uid="uid://teaeb5w5bwc5" path="res://CONTENT ID - intense-trailer-cinematic-142691.mp3" id="3_deq60"]
+[ext_resource type="AudioStream" uid="uid://jrfxh5awdl7u" path="res://fire swish.wav" id="3_dyfb5"]
+[ext_resource type="AudioStream" uid="uid://dixvy42m01p23" path="res://computer-mouse-click.mp3" id="3_uw6j2"]
+[ext_resource type="AudioStream" uid="uid://dmuocidc130k3" path="res://CONTENT ID - suspense-tension-background-music-323181.mp3" id="4_7w1xu"]
+[ext_resource type="AudioStream" uid="uid://bvon7hmeeu8ob" path="res://sam-backraund-music-5-244020.mp3" id="5_ih1d4"]
+[ext_resource type="AudioStream" uid="uid://ds0whwuk0fp6v" path="res://TensionBuilder.mp3" id="6_p2g6k"]
+[ext_resource type="AudioStream" uid="uid://dpf3yje2dqlx4" path="res://moonlight-orchestral-track-in-e-major-120bpm-12171.mp3" id="7_nkf2w"]
+[ext_resource type="AudioStream" uid="uid://dg6p34ag32hag" path="res://run-like-fire-357231.mp3" id="8_vfltm"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vnck2"]
+sky_top_color = Color(0.50980395, 0.14901961, 0.45882353, 1)
+sky_horizon_color = Color(0.5301941, 0.41981176, 0.50429726, 1)
+ground_bottom_color = Color(0.2283001, 0.14755505, 0.17569315, 1)
+ground_horizon_color = Color(0.5301941, 0.41981176, 0.50429726, 1)
+energy_multiplier = 5.0
+
+[sub_resource type="Sky" id="Sky_emhnf"]
+sky_material = SubResource("ProceduralSkyMaterial_vnck2")
+
+[sub_resource type="Environment" id="Environment_uw6j2"]
+background_mode = 2
+sky = SubResource("Sky_emhnf")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_n87jj"]
+size = Vector3(1.77, 0.01, 1)
+
+[sub_resource type="Animation" id="Animation_emhnf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.5707964, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpinSFX:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_vnck2"]
+resource_name = "Spin"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1.5707964, 0, 0), Vector3(1.8675023, 2.0943952, 0), Vector3(1.3962634, 4.1887903, 0), Vector3(1.5707964, 6.2831855, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.73333335, 0.76666665),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"_set_definition"
+}, {
+"args": [],
+"method": &"_set_word"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpinSFX:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_emhnf"]
+_data = {
+&"RESET": SubResource("Animation_emhnf"),
+&"Spin": SubResource("Animation_vnck2")
+}
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_vnck2")
+bgMusic = Array[AudioStream]([ExtResource("2_a2b50"), ExtResource("3_deq60"), ExtResource("4_7w1xu"), ExtResource("5_ih1d4"), ExtResource("6_p2g6k"), ExtResource("7_nkf2w"), ExtResource("8_vfltm")])
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_uw6j2")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.2875, -0.62691945, 0.72409654, 0.206219, 0.7788014, 0.5924039, -0.9353169, -0.020993643, 0.3531881, 0, 0, 0)
+light_color = Color(0, 0.5921569, 1, 1)
+light_energy = 5.0
+shadow_enabled = true
+directional_shadow_blend_splits = true
+sky_mode = 1
+
+[node name="Panel" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("BoxMesh_n87jj")
+
+[node name="Word" type="Label3D" parent="Panel"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.0050648768, -0.3)
+
+[node name="Definition" type="Label3D" parent="Panel"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.005064894, 0.099999994)
+font_size = 16
+autowrap_mode = 3
+width = 355.0
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+fov = 28.0
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -77.5
+offset_top = -96.0
+offset_right = 77.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 64
+text = "Next"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_emhnf")
+}
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, -1)
+texture = ExtResource("2_emhnf")
+
+[node name="BGMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_deq60")
+autoplay = true
+
+[node name="SpinSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_dyfb5")
+
+[node name="ClickSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_uw6j2")
+
+[connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]
+[connection signal="finished" from="BGMusic" to="." method="_on_bg_music_finished"]
+[connection signal="finished" from="SpinSFX" to="." method="_on_spin_sfx_finished"]
