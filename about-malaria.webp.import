@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bdpvlesml4v0j"
 path.s3tc="res://.godot/imported/about-malaria.webp-46a96edce7081f252026369643b10f5b.s3tc.ctex"
+path.etc2="res://.godot/imported/about-malaria.webp-46a96edce7081f252026369643b10f5b.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://about-malaria.webp"
-dest_files=["res://.godot/imported/about-malaria.webp-46a96edce7081f252026369643b10f5b.s3tc.ctex"]
+dest_files=["res://.godot/imported/about-malaria.webp-46a96edce7081f252026369643b10f5b.s3tc.ctex", "res://.godot/imported/about-malaria.webp-46a96edce7081f252026369643b10f5b.etc2.ctex"]
 
 [params]
 
