@@ -11,7 +11,6 @@ var timer := 0.0
 
 func _ready():
 	udp.set_broadcast_enabled(true)
-	udp.listen(0)
 
 func _process(delta):
 	timer += delta

@@ -16,14 +16,13 @@ extends Node3D
 	"How do you store potential energy?": "Springs, balloons, elastic bands.",
 	"What are the main differences between pneumatics and hydraulics?": "Pneumatics use gas for a fast (yet lower) force, whereas hydraulics use liquids for a smoother, higher force.",
 	"What is the most common liquid used in hydraulics?": "Oil.",
-	"What is an actuator?": "An actuator is a component of a machine that is responsible for moving or controlling a mechanism or system."
-}
+	"What is an actuator?": "An actuator is a component of a machine that is responsible for moving or controlling a mechanism or system."}
 
 var word := ""
 var definition := ""
 const STORAGE_KEY := "questions_data"
 var is_host := false
-
+var occurrences := {}
 func _is_web() -> bool: return OS.get_name() == "Web"
 
 func _ready() -> void:
@@ -41,18 +40,42 @@ func _on_button_pressed() -> void:
 	_save_questions_to_browser()
 	$ClickSFX.play()
 	if side:
-		word = questions.keys().pick_random()
+		word = random_card(weightedQ())
+		if word in occurrences: occurrences[word] += 1
+		else: occurrences[word] = 1
 		$AnimationPlayer.play("Spin")
 	else:
 		definition = questions[word]
 		$AnimationPlayer.play_backwards("Spin")
 	side = !side
 
+func weightedQ() -> Dictionary:
+	var weighted := {}
+	for question in questions.keys():
+		var count = occurrences.get(question, 0)
+		weighted[question] = max(0.1, 1.0 / pow(count + 1, 2))
+	return weighted
+
 func _set_word() -> void: $Panel/Word.text = word
 
 func _set_definition() -> void: $Panel/Word.text = definition
 
 func _on_spin_sfx_finished() -> void: $SpinSFX.pitch_scale = randf_range(0.5, 1.5)
+
+func random_card(weighted_items: Dictionary) -> Variant:
+	var total := 0.0
+	for w in weighted_items.values():
+		total += w
+
+	var roll := randf() * total
+	var cumulative := 0.0
+
+	for key in weighted_items.keys():
+		cumulative += weighted_items[key]
+		if roll < cumulative:
+			return key
+
+	return weighted_items.keys().back()
 
 func _on_bg_music_finished() -> void:
 	$BGMusic.stream = bgMusic.pick_random()
