@@ -1,29 +1,7 @@
 [gd_scene format=3 uid="uid://bru3o2lkppmqf"]
 
-[ext_resource type="FontFile" uid="uid://7wr1d8n3xaa7" path="res://Assets/Fonts/QuicksilverItalic-OV9Z4.ttf" id="1_aabao"]
+[ext_resource type="Theme" uid="uid://ce3a5c6k6j0ok" path="res://mainTheme.tres" id="1_m78sq"]
 [ext_resource type="Script" uid="uid://cmcrp6iv0ks28" path="res://UI/notes.gd" id="2_m78sq"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m78sq"]
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0.8, 0.8, 0.8, 0)
-border_blend = true
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-corner_detail = 20
-expand_margin_left = 5.0
-expand_margin_top = 5.0
-expand_margin_right = 5.0
-expand_margin_bottom = 5.0
-shadow_size = 5
-shadow_offset = Vector2(1, 2)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d3lbd"]
-bg_color = Color(0.5647059, 0, 0, 1)
 
 [node name="Notes" type="Window" unique_id=461986941]
 process_mode = 3
@@ -37,12 +15,7 @@ always_on_top = true
 transparent = true
 min_size = Vector2i(115, 0)
 content_scale_mode = 1
-theme_override_colors/title_color = Color(0.77254903, 0.09019608, 0.7294118, 1)
-theme_override_colors/title_outline_modulate = Color(1, 1, 1, 1)
-theme_override_constants/title_outline_size = 10
-theme_override_fonts/title_font = ExtResource("1_aabao")
-theme_override_styles/embedded_border = SubResource("StyleBoxFlat_m78sq")
-theme_override_styles/embedded_unfocused_border = SubResource("StyleBoxFlat_d3lbd")
+theme = ExtResource("1_m78sq")
 script = ExtResource("2_m78sq")
 
 [node name="TextEdit" type="TextEdit" parent="." unique_id=810466139]

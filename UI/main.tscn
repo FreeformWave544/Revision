@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://dpf3yje2dqlx4" path="res://moonlight-orchestral-track-in-e-major-120bpm-12171.mp3" id="7_nkf2w"]
 [ext_resource type="AudioStream" uid="uid://dg6p34ag32hag" path="res://run-like-fire-357231.mp3" id="8_vfltm"]
 [ext_resource type="FontFile" uid="uid://cvn4vhcn5c1ii" path="res://Assets/Fonts/Beyond Wonderland.ttf" id="9_a2b50"]
+[ext_resource type="Theme" uid="uid://ce3a5c6k6j0ok" path="res://mainTheme.tres" id="9_p2g6k"]
 [ext_resource type="Script" uid="uid://cqeu5hsavms1y" path="res://UI/add_rem.gd" id="12_7w1xu"]
 [ext_resource type="Script" uid="uid://bebgbjoi8ub2w" path="res://UI/hosts.gd" id="13_ih1d4"]
 [ext_resource type="Script" uid="uid://dftvisxkb41iq" path="res://UI/join.gd" id="14_p2g6k"]
@@ -187,8 +188,18 @@ offset_top = -76.0
 offset_right = 283.5
 grow_horizontal = 2
 grow_vertical = 0
+theme = ExtResource("9_p2g6k")
 alignment = 1
 vertical = true
+
+[node name="Options" type="Button" parent="ClickStuff" unique_id=1690990294]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8745098, 0.2509804, 0.8745098, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+button_mask = 3
+text = "Options"
+flat = true
 
 [node name="Subject" type="OptionButton" parent="ClickStuff" unique_id=1654182049]
 layout_mode = 2
@@ -399,6 +410,7 @@ offset_bottom = -78.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[connection signal="pressed" from="ClickStuff/Options" to="." method="_on_options_pressed"]
 [connection signal="item_selected" from="ClickStuff/Subject" to="." method="_on_subject_item_selected"]
 [connection signal="toggled" from="ClickStuff/Music" to="." method="_on_music_toggled"]
 [connection signal="pressed" from="ClickStuff/Notes" to="." method="_on_notes_toggled"]

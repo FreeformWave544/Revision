@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://c17f3gg2b2bi2"]
+
+[ext_resource type="PackedScene" path="res://addons/maaacks_options_menus/base/nodes/menus/options_menu/input/input_icon_mapper.tscn" id="1_7vieq"]
+
+[node name="InputIconMapper" instance=ExtResource("1_7vieq")]

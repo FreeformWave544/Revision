@@ -215,3 +215,6 @@ func _on_subject_item_selected(index: int) -> void:
 func _update_subjects() -> void:
 	$ClickStuff/Subject.clear()
 	for Q in questions.keys(): $ClickStuff/Subject.add_item(Q)
+
+func _on_options_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/menus/options_menu/master_options_menu_with_tabs.tscn")

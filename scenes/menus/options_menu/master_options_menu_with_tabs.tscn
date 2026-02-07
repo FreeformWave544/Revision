@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://de2irdunewcye"]
+
+[ext_resource type="Script" uid="uid://c3mignmhuvvq4" path="res://addons/maaacks_options_menus/base/nodes/menus/options_menu/paginated_tab_container.gd" id="1_b036r"]
+[ext_resource type="Theme" uid="uid://ce3a5c6k6j0ok" path="res://mainTheme.tres" id="1_fqpxk"]
+[ext_resource type="PackedScene" uid="uid://dajmnnegtfbxk" path="res://scenes/menus/options_menu/input/input_options_menu.tscn" id="2_fqpxk"]
+[ext_resource type="PackedScene" uid="uid://dbjv8f0uj82tf" path="res://scenes/menus/options_menu/input/input_extras_menu.tscn" id="3_w1dvr"]
+[ext_resource type="PackedScene" uid="uid://ciou0rlw6owmt" path="res://scenes/menus/options_menu/audio/audio_options_menu.tscn" id="4_bn2s3"]
+[ext_resource type="PackedScene" uid="uid://ct27x7c04m2ab" path="res://scenes/menus/options_menu/video/video_options_menu_with_extras.tscn" id="5_6wkjv"]
+
+[node name="Options" type="Control" unique_id=1581705141]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_fqpxk")
+
+[node name="MasterOptionsMenu" type="TabContainer" parent="." unique_id=1253210886]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tab_alignment = 1
+current_tab = 0
+script = ExtResource("1_b036r")
+
+[node name="Inputs" parent="MasterOptionsMenu" unique_id=1215453454 instance=ExtResource("3_w1dvr")]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Audio" parent="MasterOptionsMenu" unique_id=137167354 instance=ExtResource("4_bn2s3")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="Video" parent="MasterOptionsMenu" unique_id=1048805898 instance=ExtResource("5_6wkjv")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="Back" type="Button" parent="." unique_id=1258271369]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -45.0
+offset_bottom = 31.0
+grow_horizontal = 0
+text = "  Back  "
+
+[node name="Controls" parent="." unique_id=314013767 instance=ExtResource("2_fqpxk")]
+visible = false
+layout_mode = 0
+anchors_preset = 0
+offset_left = 20.0
+offset_top = 38.0
+offset_right = -20.0
+offset_bottom = -5.0
+
+[connection signal="pressed" from="Back" to="MasterOptionsMenu" method="_on_back_pressed"]
