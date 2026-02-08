@@ -7,7 +7,7 @@
         <br />
         <br />
         ·
-        <a href="[itch.io](https://freeformwave.itch.io/revision)">View Demo</a>
+        <a href="https://freeformwave.itch.io/revision">View Demo</a>
     </p>
 </div>
 
