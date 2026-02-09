@@ -188,7 +188,6 @@ func receive_questions_update(new_questions: Dictionary):
 	questions[subject] = new_questions
 	print("Questions synced from ", multiplayer.get_remote_sender_id())
 	_save_questions_to_browser()
-
 	if not questions[subject].has(word):
 		word = questions[subject].keys().pick_random()
 		definition = questions[subject][word]
@@ -218,3 +217,6 @@ func _update_subjects() -> void:
 
 func _on_options_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/menus/options_menu/master_options_menu_with_tabs.tscn")
+
+func _on_resins_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/carbon_glass.tscn")

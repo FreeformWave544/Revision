@@ -183,9 +183,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -283.5
-offset_top = -76.0
-offset_right = 283.5
+offset_left = -350.0
+offset_top = -83.0
+offset_right = 350.0
+offset_bottom = -7.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("9_p2g6k")
@@ -255,6 +256,10 @@ flat = true
 visible = false
 layout_mode = 2
 text = "Host Questions"
+
+[node name="Resins" type="Button" parent="ClickStuff" unique_id=1663063032]
+layout_mode = 2
+text = "Resin Stuff"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=693215841]
 libraries/ = SubResource("AnimationLibrary_emhnf")
@@ -418,6 +423,7 @@ grow_vertical = 2
 [connection signal="pressed" from="ClickStuff/Questions" to="." method="_on_questions_pressed"]
 [connection signal="pressed" from="ClickStuff/AddRemove" to="." method="_on_add_remove_pressed"]
 [connection signal="pressed" from="ClickStuff/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="ClickStuff/Resins" to="." method="_on_resins_pressed"]
 [connection signal="finished" from="BGMusic" to="." method="_on_bg_music_finished"]
 [connection signal="pressed" from="AddRem/Add" to="AddRem" method="_on_add_pressed"]
 [connection signal="pressed" from="AddRem/Remove" to="AddRem" method="_on_remove_pressed"]

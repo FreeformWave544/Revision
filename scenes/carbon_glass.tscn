@@ -1,0 +1,190 @@
+[gd_scene format=3 uid="uid://ddmmjstdgaa2p"]
+
+[ext_resource type="Script" uid="uid://ssw15umkaw4s" path="res://scenes/carbon_glass.gd" id="1_losec"]
+[ext_resource type="FontFile" uid="uid://cvn4vhcn5c1ii" path="res://Assets/Fonts/Beyond Wonderland.ttf" id="2_akyfg"]
+[ext_resource type="AudioStream" uid="uid://cwdkjt62sxali" path="res://Logo #9 (Extended).mp3" id="3_esd4t"]
+[ext_resource type="Theme" uid="uid://ce3a5c6k6j0ok" path="res://mainTheme.tres" id="4_1onrv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_esd4t"]
+bg_color = Color(0.6, 0.6, 0.6, 0.29411766)
+skew = Vector2(0.5, 0)
+border_width_left = 15
+border_width_top = 1
+border_width_right = 10
+border_width_bottom = 1
+border_color = Color(0.7007377, 0.8065815, 0.97720724, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 1
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 1
+corner_detail = 20
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+shadow_size = 5
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1onrv"]
+bg_color = Color(0.32172772, 0.32172805, 0.32172796, 1)
+skew = Vector2(0.5, 0)
+border_width_left = 15
+border_width_top = 1
+border_width_right = 10
+border_width_bottom = 1
+border_color = Color(0.7007377, 0.8065815, 0.97720724, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 1
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 1
+corner_detail = 20
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+shadow_size = 5
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mgoy1"]
+bg_color = Color(0.6, 0.6, 0.6, 0.6)
+skew = Vector2(0.5, 0)
+border_width_left = 15
+border_width_top = 1
+border_width_right = 10
+border_width_bottom = 1
+border_color = Color(0.7007377, 0.8065815, 0.97720724, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 1
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 1
+corner_detail = 20
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+shadow_size = 5
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s2nf5"]
+
+[node name="CarbonGlass" type="Control" unique_id=902066685]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_losec")
+
+[node name="Panel" type="Panel" parent="." unique_id=1060868554]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel" unique_id=426548112]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "1. [color=cyan]Prepare[/color] a mould or former for the required shape.
+2. [color=cyan]Apply release agent[/color] to the mould or former.
+3. Apply the [color=cyan]first resin coat[/color] (or gel coat for GRP) to the [color=red]mould or former.[/color]
+4. Apply the [color=cyan]GRP [color=purple]matting or woven[/color][/color] carbon fibre sheet on top of the first coat.
+5. Apply another [color=red]coat of resin[/color] and work in the material.
+6. [color=cyan]Repeat stages 4 & 5[/color] until the required thickness of material is achieved.
+7. Seal the workpiece in a [color=cyan]vacuum bag[/color] and place in an oven for the resin to [color=green]cure[/color].
+8. [color=cyan]Release[/color] the workpiece from the [color=cyan]mould or former[/color].
+9. [color=cyan]Trim and finish[/color] the workpiece."
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters_behavior = 1
+
+[node name="Next" type="Button" parent="Panel" unique_id=520977122]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -77.0
+offset_top = -82.0
+offset_right = 77.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_akyfg")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_esd4t")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1onrv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_mgoy1")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_s2nf5")
+text = "Next"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2014710203]
+stream = ExtResource("3_esd4t")
+
+[node name="CenterContainer" type="Panel" parent="." unique_id=816322567]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 389.3333
+offset_top = 219.0
+offset_right = -389.3333
+offset_bottom = -219.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="CenterContainer" unique_id=2032081635]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -81.5
+offset_top = -29.0
+offset_right = 81.5
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+
+[node name="FlowContainer" type="FlowContainer" parent="CenterContainer/CenterContainer" unique_id=1105535260]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CenterContainer/CenterContainer/FlowContainer" unique_id=666727844]
+layout_mode = 2
+text = "Did You Do Adquate?"
+
+[node name="Yes" type="Button" parent="CenterContainer/CenterContainer/FlowContainer" unique_id=1610044351]
+layout_mode = 2
+text = "Yes"
+
+[node name="No" type="Button" parent="CenterContainer/CenterContainer/FlowContainer" unique_id=647736414]
+layout_mode = 2
+text = "No"
+
+[node name="Label" type="Label" parent="." unique_id=419307113]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme = ExtResource("4_1onrv")
+text = "(Steps appear half at a time (except for the first!).)"
+
+[connection signal="pressed" from="Panel/Next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="CenterContainer/CenterContainer/FlowContainer/Yes" to="." method="_on_yes_pressed"]
+[connection signal="pressed" from="CenterContainer/CenterContainer/FlowContainer/No" to="." method="_on_no_pressed"]
