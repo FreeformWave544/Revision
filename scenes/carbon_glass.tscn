@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ssw15umkaw4s" path="res://scenes/carbon_glass.gd" id="1_losec"]
 [ext_resource type="FontFile" uid="uid://cvn4vhcn5c1ii" path="res://Assets/Fonts/Beyond Wonderland.ttf" id="2_akyfg"]
-[ext_resource type="AudioStream" uid="uid://cwdkjt62sxali" path="res://Logo #9 (Extended).mp3" id="3_esd4t"]
+[ext_resource type="AudioStream" uid="uid://cwdkjt62sxali" path="res://Assets/Audio/Logo #9 (Extended).mp3" id="3_esd4t"]
 [ext_resource type="Theme" uid="uid://ce3a5c6k6j0ok" path="res://mainTheme.tres" id="4_1onrv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_esd4t"]

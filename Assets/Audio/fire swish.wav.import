@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://jrfxh5awdl7u"
-path="res://.godot/imported/fire swish.wav-b7c28bb83386d37ccc6e02feaf1c2122.sample"
+path="res://.godot/imported/fire swish.wav-3856eebef903da89f65dc3df67c914b7.sample"
 
 [deps]
 
-source_file="res://fire swish.wav"
-dest_files=["res://.godot/imported/fire swish.wav-b7c28bb83386d37ccc6e02feaf1c2122.sample"]
+source_file="res://Assets/Audio/fire swish.wav"
+dest_files=["res://.godot/imported/fire swish.wav-3856eebef903da89f65dc3df67c914b7.sample"]
 
 [params]
 

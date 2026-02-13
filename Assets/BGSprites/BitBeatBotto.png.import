@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cgoi3uxod4p6"
-path="res://.godot/imported/BitBeatBotto.png-797d69b9b08771d232907a22ebea0b90.ctex"
+path="res://.godot/imported/BitBeatBotto.png-31078310beb7ca94210b3ba1cbdcfa32.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://BitBeatBotto.png"
-dest_files=["res://.godot/imported/BitBeatBotto.png-797d69b9b08771d232907a22ebea0b90.ctex"]
+source_file="res://Assets/BGSprites/BitBeatBotto.png"
+dest_files=["res://.godot/imported/BitBeatBotto.png-31078310beb7ca94210b3ba1cbdcfa32.ctex"]
 
 [params]
 

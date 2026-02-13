@@ -40,6 +40,7 @@ func _ready() -> void:
 	definition = questions[subject][word]
 	_set_word()
 	_update_subjects()
+	if $ClickStuff/Subject.item_count >= 1: $ClickStuff/Subject.selected = $ClickStuff/Subject.get_item_index(0)
 
 var side = true
 func _on_button_pressed() -> void:
@@ -209,11 +210,15 @@ func _on_notes_toggled() -> void:
 	add_child(load("res://UI/notes.tscn").instantiate())
 
 func _on_subject_item_selected(index: int) -> void:
+	var selected = $ClickStuff/Subject.selected
 	subject = $ClickStuff/Subject.get_item_text(index)
+	$ClickStuff/Subject.selected = selected
 
 func _update_subjects() -> void:
+	var selected = $ClickStuff/Subject.selected
 	$ClickStuff/Subject.clear()
 	for Q in questions.keys(): $ClickStuff/Subject.add_item(Q)
+	$ClickStuff/Subject.selected = selected
 
 func _on_options_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/menus/options_menu/master_options_menu_with_tabs.tscn")
