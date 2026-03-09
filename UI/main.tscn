@@ -204,6 +204,7 @@ flat = true
 
 [node name="Subject" type="OptionButton" parent="ClickStuff" unique_id=1654182049]
 layout_mode = 2
+fit_to_longest_item = false
 
 [node name="Music" type="CheckButton" parent="ClickStuff" unique_id=2012317695]
 layout_mode = 2
