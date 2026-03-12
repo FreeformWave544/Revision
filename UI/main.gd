@@ -121,7 +121,6 @@ var word := ""
 var definition := ""
 var topic := ""
 const STORAGE_KEY := "questions_data"
-var is_host := false
 var occurrences := {}
 @export_enum("DT","Religious Education","CS") var subject := "CS"
 

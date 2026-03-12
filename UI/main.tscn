@@ -6,8 +6,6 @@
 [ext_resource type="FontFile" uid="uid://cvn4vhcn5c1ii" path="res://Assets/Fonts/Beyond Wonderland.ttf" id="9_a2b50"]
 [ext_resource type="Theme" uid="uid://ce3a5c6k6j0ok" path="res://mainTheme.tres" id="9_p2g6k"]
 [ext_resource type="Script" uid="uid://cqeu5hsavms1y" path="res://UI/add_rem.gd" id="12_7w1xu"]
-[ext_resource type="Script" uid="uid://bebgbjoi8ub2w" path="res://UI/hosts.gd" id="13_ih1d4"]
-[ext_resource type="Script" uid="uid://dftvisxkb41iq" path="res://UI/join.gd" id="14_p2g6k"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vnck2"]
 sky_top_color = Color(0.50980395, 0.14901961, 0.45882353, 1)
@@ -350,54 +348,6 @@ layout_mode = 2
 placeholder_text = "Answer (Enter to submit / blank = new subject)"
 alignment = 1
 
-[node name="Hosts" type="Control" parent="." unique_id=82344471]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -1004.0
-offset_bottom = -206.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-script = ExtResource("13_ih1d4")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Hosts" unique_id=159995602]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Join" type="Panel" parent="." unique_id=2080586955]
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -282.0
-offset_top = -173.0
-offset_right = 282.0
-offset_bottom = 173.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("14_p2g6k")
-
-[node name="LineEdit" type="LineEdit" parent="Join" unique_id=269979722]
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -15.5
-offset_bottom = 15.5
-grow_horizontal = 2
-grow_vertical = 2
-placeholder_text = "Enter Room Code"
-alignment = 1
-
 [node name="questions" type="CodeEdit" parent="." unique_id=1346312600]
 visible = false
 anchors_preset = 15
@@ -425,4 +375,3 @@ grow_vertical = 2
 [connection signal="pressed" from="AddRem/RemQ/RemoveQ" to="AddRem" method="_on_remove_q_pressed"]
 [connection signal="text_submitted" from="AddRem/AddQ/Q" to="AddRem" method="_on_q_text_submitted"]
 [connection signal="text_submitted" from="AddRem/AddQ/Ans" to="AddRem" method="_on_q_text_submitted"]
-[connection signal="text_submitted" from="Join/LineEdit" to="Join" method="_on_line_edit_text_submitted"]
