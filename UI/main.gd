@@ -24,20 +24,95 @@ extends Node3D
 			"What is a computer system made up of? [hint: —ware]": "Both hardware and software.",
 			"List a few common examples of embedded systems:": "Dishwasher, washing machine, fridge, smart phone, TV.",
 			"Do embedded systems contain an OS?": "Not usually.",
-			"What types of tasks do embedded systems perform?": "They perform very specialised tasks",
+			"What types of tasks do embedded systems perform?": "They perform very specialised tasks.",
 			"Define an embedded system.": "A system which has a processor built in to another device."
 		},
 		"CPU": {
-			"List some input devices...": "(Laptop) Keyboard, buttons, trackpad, microphone.  (Smartphone) GPS sensor, gyroscopic sensor, touchscreen.",
+			"List some input devices...": "(Laptop) Keyboard, buttons, trackpad, microphone. (Smartphone) GPS sensor, gyroscopic sensor, touchscreen.",
 			"List some output devices...": "(Laptop & Smartphone) Speakers, display.",
-			"What did the Von Neumann architecture change?": "It stored the program data alongside the data as well.",
-			"What is the cache?": "The cache is a memory located on the CPU that is slower than registers yet faster than RAM."
+			"What did the Von Neumann architecture change?": "It stored both program instructions and data in the same memory.",
+			"What is the cache?": "A small amount of very fast memory located on the CPU used to store frequently used instructions and data."
 		},
 		"Registers": {
 			"What is a register?": "A register is a very fast memory location in the CPU itself.",
 			"The PC register does...": "The PC (Program Counter) holds the address of the next instruction to be executed.",
-			"The MAR does...": "The MAR (Memory Address Register) holds the memory address of the current instruction, and then the data that it uses, so that these can be fetched from memory.",
-			"The MDR does...": "The MDR (Memory Data Register) holds the actual instruction, and then the data that has been fetched from memory."
+			"The MAR does...": "The MAR (Memory Address Register) holds the address of the data or instruction that needs to be fetched from memory.",
+			"The MDR does...": "The MDR (Memory Data Register) holds the data or instruction that has been fetched from memory."
+		},
+		"FDE Cycle": {
+			"What does FDE stand for?": "Fetch, Decode, Execute.",
+			"What happens in the fetch stage?": "The CPU retrieves the next instruction from memory using the address stored in the program counter.",
+			"What happens in the decode stage?": "The control unit interprets the instruction to determine what action is required.",
+			"What happens in the execute stage?": "The CPU carries out the instruction, such as performing a calculation or moving data."
+		},
+		"Memory": {
+			"What is RAM?": "Random Access Memory is volatile memory used to store data and programs currently in use.",
+			"What does volatile mean?": "Data is lost when power is turned off.",
+			"What is ROM?": "Read Only Memory is non-volatile memory that stores permanent instructions such as the boot program.",
+			"What is cache memory used for?": "To store frequently used data and instructions so the CPU can access them faster."
+		},
+		"Storage": {
+			"What are the three main types of secondary storage?": "Magnetic, optical, and solid state.",
+			"What is magnetic storage?": "Storage that uses magnetised surfaces to store data, such as hard disk drives.",
+			"What is optical storage?": "Storage that uses lasers to read and write data, such as CDs and DVDs.",
+			"What is solid state storage?": "Storage that uses flash memory with no moving parts, such as SSDs and USB drives."
+		},
+		"Binary": {
+			"What is binary?": "A number system that uses only two digits: 0 and 1.",
+			"What is a bit?": "A single binary digit.",
+			"What is a byte?": "Eight bits.",
+			"Why do computers use binary?": "Because electronic circuits have two states (on/off) which map easily to 1 and 0."
+		},
+		"Compression": {
+			"What is data compression?": "Reducing the size of a file so it takes up less storage space or transfers faster.",
+			"What is lossless compression?": "Compression where no data is lost and the original file can be perfectly reconstructed.",
+			"What is lossy compression?": "Compression where some data is permanently removed to reduce file size."
+		},
+		"Networking": {
+			"What is a computer network?": "Two or more computers connected together to share data and resources.",
+			"What is a LAN?": "A Local Area Network covering a small area such as a home, school, or office.",
+			"What is a WAN?": "A Wide Area Network covering a large geographical area.",
+			"What is packet switching?": "Data is split into packets which are sent independently across a network and reassembled at the destination."
+		},
+		"Protocols": {
+			"What is a network protocol?": "A set of rules that define how data is transmitted across a network.",
+			"What does HTTP do?": "Transfers web pages between web servers and web browsers.",
+			"What does HTTPS do?": "A secure version of HTTP that encrypts data.",
+			"What does FTP do?": "Transfers files between computers on a network.",
+			"What does SMTP do?": "Used to send emails between mail servers."
+		},
+		"Security": {
+			"What is malware?": "Malicious software designed to damage or gain unauthorised access to a system.",
+			"What is a firewall?": "A security system that monitors and controls incoming and outgoing network traffic.",
+			"What is encryption?": "The process of converting data into a coded form to prevent unauthorised access.",
+			"What is user access level?": "Restrictions that control what a user can do on a system."
+		},
+		"Software": {
+			"What is software?": "Programs and instructions that tell a computer what to do.",
+			"What is system software?": "Software that manages the hardware and basic functions of a computer.",
+			"What is application software?": "Programs designed for users to perform specific tasks."
+		},
+		"Computer Systems": {
+			"What is hardware?": "The physical components of a computer system.",
+			"What is the operating system?": "System software that manages hardware, memory, files, and processes.",
+			"What does the OS provide for the user?": "A user interface to interact with the computer."
+		},
+		"Data Types": {
+			"What is an integer?": "A whole number data type.",
+			"What is a real/float?": "A data type used for numbers with decimal points.",
+			"What is a boolean?": "A data type that can only be true or false.",
+			"What is a character?": "A single letter, number, or symbol.",
+			"What is a string?": "A sequence of characters."
+		},
+		"Internet": {
+			"What is the internet?": "A global network of interconnected computer networks.",
+			"What is the World Wide Web?": "A system of linked web pages accessed through the internet.",
+			"What is a web server?": "A computer that stores and delivers web pages to users."
+		},
+		"Laws": {
+			"What does the Data Protection Act do?": "Protects personal data and controls how organisations use it.",
+			"What does the Computer Misuse Act do?": "Makes unauthorised access to computer systems illegal.",
+			"What does copyright law protect?": "Original work such as software, music, and documents from being copied without permission."
 		}
 	}
 }
@@ -54,12 +129,7 @@ func _is_web() -> bool: return OS.get_name() == "Web"
 
 func _ready() -> void:
 	_normalize_questions()
-	_load_questions_from_browser()
-	multiplayer.peer_connected.connect(_on_peer_connected)
-	multiplayer.peer_disconnected.connect(_on_peer_disconnected)
-	multiplayer.connected_to_server.connect(_on_connected_to_server)
-	multiplayer.connection_failed.connect(_on_connection_failed)
-	topic = questions[subject].keys()[0]
+	topic = questions[subject].keys().pick_random()
 	word = questions[subject][topic].keys().pick_random()
 	definition = questions[subject][topic][word]
 	_set_word()
@@ -75,10 +145,10 @@ func _normalize_questions():
 
 var side = true
 func _on_button_pressed() -> void:
-	_save_questions_to_browser()
 	$ClickSFX.play()
 	if questions[subject][topic].is_empty(): return
 	if side:
+		topic = questions[subject].keys().pick_random()
 		word = random_card(weightedQ())
 		occurrences[word] = occurrences.get(word,0)+1
 		$AnimationPlayer.play("Spin")
@@ -116,7 +186,6 @@ func _on_bg_music_finished() -> void:
 func _on_music_toggled(toggled_on:bool)->void: $BGMusic.playing=toggled_on
 
 func _on_questions_pressed()->void:
-	_save_questions_to_browser()
 	if not $questions.visible:
 		$questions.show()
 		$questions.text = JSON.stringify(questions[subject][topic],"\t")
@@ -136,68 +205,8 @@ func _load_questions_from_text()->void:
 	questions[subject][topic]=new_q
 	$questions.hide()
 	$questions.text=""
-	_save_questions_to_browser()
-	if is_host: sync_questions_to_all()
 
 func _on_add_remove_pressed()->void: $AddRem.show()
-
-func _load_questions_from_browser()->void:
-	if not _is_web(): return
-	var json_text=JavaScriptBridge.eval("""(function(){return localStorage.getItem('%s');})();"""%STORAGE_KEY)
-	if json_text==null or json_text=="": return
-	var json:=JSON.new()
-	if json.parse(json_text)!=OK: push_error("Failed to parse stored questions"); return
-	var data=json.get_data()
-	if typeof(data)!=TYPE_DICTIONARY: return
-	questions=data
-
-func _save_questions_to_browser()->void:
-	if not _is_web(): return
-	var json_text:=JSON.stringify(questions)
-	var esc=json_text.replace("\\","\\\\").replace("'","\\'")
-	JavaScriptBridge.eval("""(function(){localStorage.setItem('%s','%s');})();"""%[STORAGE_KEY,esc])
-
-func start_host(port:=8910):
-	var peer:=ENetMultiplayerPeer.new()
-	if peer.create_server(port,8)!=OK: push_error("Failed to start server"); return
-	multiplayer.multiplayer_peer=peer
-	is_host=true
-
-func _on_peer_connected(id:int):
-	print("Peer connected:",id)
-	if is_host: rpc_id(id,"receive_questions_update",questions)
-
-func _on_peer_disconnected(id:int): print("Peer disconnected:",id)
-func _on_connected_to_server(): print("Successfully connected to server")
-func _on_connection_failed(): push_error("Failed to connect to server")
-
-func join_host(ip:String,port:=8910):
-	var peer:=ENetMultiplayerPeer.new()
-	if peer.create_client(ip,port)!=OK: push_error("Failed to create client"); return
-	multiplayer.multiplayer_peer=peer
-	is_host=false
-	print("Connecting to ",ip)
-
-func sync_questions_to_all():
-	if is_host: rpc("receive_questions_update",questions)
-
-@rpc("any_peer","call_remote","reliable")
-func receive_questions_update(new_q:Dictionary):
-	questions=new_q
-	print("Questions synced from ",multiplayer.get_remote_sender_id())
-	_save_questions_to_browser()
-	if not questions[subject][topic].has(word):
-		word=questions[subject][topic].keys().pick_random()
-		definition=questions[subject][topic][word]
-		if side: _set_word()
-		else: _set_definition()
-
-func update_and_sync_questions(new_q:Dictionary):
-	questions=new_q
-	_save_questions_to_browser()
-	if is_host: sync_questions_to_all()
-
-func _on_host_pressed()->void: start_host()
 
 func _on_notes_toggled()->void:
 	for c in get_children():
@@ -206,7 +215,7 @@ func _on_notes_toggled()->void:
 
 func _on_subject_item_selected(index:int)->void:
 	subject=$ClickStuff/Subject.get_item_text(index)
-	topic=questions[subject].keys()[0]
+	topic=questions[subject].keys().pick_random()
 
 func _update_subjects()->void:
 	var sel=$ClickStuff/Subject.selected
