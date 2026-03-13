@@ -74,6 +74,12 @@ extends Node3D
 			"What is a WAN?": "A Wide Area Network covering a large geographical area.",
 			"What is packet switching?": "Data is split into packets which are sent independently across a network and reassembled at the destination."
 		},
+		"Network Hardware": {
+			"What does a router do?": "Directs data packets between different networks.",
+			"What does a switch do?": "Connects devices in a LAN and sends data to the correct device.",
+			"What does a NIC do?": "A Network Interface Card allows a device to connect to a network.",
+			"What is a WAP?": "A Wireless Access Point allows wireless devices to connect to a network."
+		},
 		"Protocols": {
 			"What is a network protocol?": "A set of rules that define how data is transmitted across a network.",
 			"What does HTTP do?": "Transfers web pages between web servers and web browsers.",
@@ -85,7 +91,11 @@ extends Node3D
 			"What is malware?": "Malicious software designed to damage or gain unauthorised access to a system.",
 			"What is a firewall?": "A security system that monitors and controls incoming and outgoing network traffic.",
 			"What is encryption?": "The process of converting data into a coded form to prevent unauthorised access.",
-			"What is user access level?": "Restrictions that control what a user can do on a system."
+			"What is user access level?": "Restrictions that control what a user can do on a system.",
+			"What is phishing?": "A scam where attackers trick users into revealing personal information.",
+			"What is a brute force attack?": "Trying many possible passwords until the correct one is found.",
+			"What is a denial of service attack?": "Overloading a network or server so it cannot respond to users.",
+			"What is social engineering?": "Manipulating people into revealing confidential information."
 		},
 		"Software": {
 			"What is software?": "Programs and instructions that tell a computer what to do.",
@@ -113,6 +123,17 @@ extends Node3D
 			"What does the Data Protection Act do?": "Protects personal data and controls how organisations use it.",
 			"What does the Computer Misuse Act do?": "Makes unauthorised access to computer systems illegal.",
 			"What does copyright law protect?": "Original work such as software, music, and documents from being copied without permission."
+		},
+		"Data Representation": {
+			"What is denary?": "The base-10 number system used in the modern English numerical system.",
+			"What is hexadecimal?": "A base-16 number system using digits 0–9 and letters A–F.",
+			"Why is hexadecimal used in computing?": "It represents binary numbers in a shorter and easier-to-read form.",
+			"What is ASCII?": "A character encoding system that represents characters using binary numbers.",
+			"What is Unicode?": "A character encoding system designed to represent characters from many different languages.",
+			"What is image resolution?": "The number of pixels in an image, usually expressed as width × height.",
+			"What is colour depth?": "The number of bits used to represent the colour of a single pixel.",
+			"What is sampling rate?": "How many sound samples are taken per second when recording audio.",
+			"What is bit depth (sound)?": "The number of bits used to represent each sound sample."
 		}
 	}
 }
@@ -133,7 +154,7 @@ func _ready() -> void:
 	definition = questions[subject][topic][word]
 	_set_word()
 	_update_subjects()
-	if $ClickStuff/Subject.item_count >= 1: $ClickStuff/Subject.selected = 0
+	if $ClickStuff/Subject.item_count >= 1: $ClickStuff/Subject.selected = 1
 
 func _normalize_questions():
 	for s in questions.keys():
@@ -149,12 +170,14 @@ func _on_button_pressed() -> void:
 	if side:
 		topic = questions[subject].keys().pick_random()
 		word = random_card(weightedQ())
-		occurrences[word] = occurrences.get(word,0)+1
+		occurrences[word] = occurrences.get(word, 0) + 1
 		$AnimationPlayer.play("Spin")
 	else:
 		definition = questions[subject][topic].get(word,"...")
 		$AnimationPlayer.play_backwards("Spin")
 	side = !side
+	await get_tree().create_timer(1.5).timeout
+	$Topic.text = "Topic: " + topic
 
 func weightedQ() -> Dictionary:
 	var weighted := {}
@@ -187,8 +210,8 @@ func _on_music_toggled(toggled_on:bool)->void: $BGMusic.playing=toggled_on
 func _on_questions_pressed()->void:
 	if not $questions.visible:
 		$questions.show()
-		$questions.text = JSON.stringify(questions[subject][topic],"\t")
-	else: _load_questions_from_text()
+		$questions.text = JSON.stringify(questions[subject],"\t")
+	else: _load_questions_from_text() ; $questions.hide()
 
 func _load_questions_from_text()->void:
 	var text=$questions.text

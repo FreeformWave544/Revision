@@ -139,6 +139,12 @@ _data = {
 &"Spin": SubResource("Animation_vnck2")
 }
 
+[sub_resource type="CodeHighlighter" id="CodeHighlighter_6sydh"]
+number_color = Color(0.728822, 0.728822, 0.728822, 1)
+symbol_color = Color(0.7294118, 0.7294118, 0.7294118, 1)
+function_color = Color(0.7294118, 0.7294118, 0.7294118, 1)
+member_variable_color = Color(0.7294118, 0.7294118, 0.7294118, 1)
+
 [node name="Main" type="Node3D" unique_id=1859457304]
 script = ExtResource("1_vnck2")
 
@@ -359,6 +365,20 @@ offset_right = -76.0
 offset_bottom = -78.0
 grow_horizontal = 2
 grow_vertical = 2
+scroll_smooth = true
+scroll_past_end_of_file = true
+caret_blink = true
+caret_move_on_right_click = false
+syntax_highlighter = SubResource("CodeHighlighter_6sydh")
+highlight_current_line = true
+auto_brace_completion_enabled = true
+auto_brace_completion_highlight_matching = true
+
+[node name="Topic" type="Label" parent="." unique_id=1642566037]
+offset_right = 40.0
+offset_bottom = 23.0
+theme = ExtResource("9_p2g6k")
+text = "Topic: "
 
 [connection signal="pressed" from="ClickStuff/Options" to="." method="_on_options_pressed"]
 [connection signal="item_selected" from="ClickStuff/Subject" to="." method="_on_subject_item_selected"]
