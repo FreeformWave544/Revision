@@ -17,7 +17,7 @@
 
 Flashcards for revision, originally made for personal uses in school, but have adapted to be SO much more versatile, so anyone can use it for revision or similar purposes!
 
-Pre-set questions for DT AQA GCSE 8552 Energy Storage!
+Pre-set questions for what ever I need them for presently!
 
 
 ### Built Using
@@ -25,7 +25,7 @@ Pre-set questions for DT AQA GCSE 8552 Energy Storage!
 
 <!-- USAGE -->
 ## Usage
-You can use it in web (via the [itch.io](https://freeformwave.itch.io/revision)) OR download the web, where the notepad will pop-out, so you can take notes then enter into the same program!
+You can use it in web (via the [itch.io](https://freeformwave.itch.io/revision)) OR download the desktop version, where the notepad will pop-out as a new window, so you can take notes on the fly, without leaving the program!
 
 <!-- LICENSE -->
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
