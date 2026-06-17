@@ -257,6 +257,10 @@ text = "Add/remove
 Questions"
 flat = true
 
+[node name="Platformer" type="Button" parent="ClickStuff" unique_id=452342048]
+layout_mode = 2
+text = "Platformer"
+
 [node name="Host" type="Button" parent="ClickStuff" unique_id=1940827547]
 visible = false
 layout_mode = 2
@@ -362,15 +366,16 @@ layout_mode = 2
 placeholder_text = "Answer (Enter to submit / blank = new subject)"
 alignment = 1
 
-[node name="questions" type="CodeEdit" parent="." unique_id=1346312600]
+[node name="questions" type="Window" parent="." unique_id=1114610669]
+oversampling_override = 1.0
+position = Vector2i(326, 74)
+size = Vector2i(500, 500)
 visible = false
+
+[node name="questions" type="CodeEdit" parent="questions" unique_id=1346312600]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 76.0
-offset_top = 78.0
-offset_right = -76.0
-offset_bottom = -78.0
 grow_horizontal = 2
 grow_vertical = 2
 scroll_smooth = true
@@ -395,6 +400,7 @@ text = "Topic: "
 [connection signal="pressed" from="ClickStuff/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="ClickStuff/Questions" to="." method="_on_questions_pressed"]
 [connection signal="pressed" from="ClickStuff/AddRemove" to="." method="_on_add_remove_pressed"]
+[connection signal="pressed" from="ClickStuff/Platformer" to="." method="_on_platformer_pressed"]
 [connection signal="pressed" from="ClickStuff/Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="ClickStuff/Resins" to="." method="_on_resins_pressed"]
 [connection signal="finished" from="BGMusic" to="." method="_on_bg_music_finished"]
